@@ -12,7 +12,7 @@ import Foundation
 
 class PeliculasProvider {
     
-    static func findPeliculasBy(name: String) async throws -> [Peliculas] {
+    static func findPeliculasBy(name: String) async throws -> [PeliculaClass] {
         let url = URL(string: "https://www.omdbapi.com/?apikey=fb7aca4&s=\(name)")!
         let (data, _) = try await URLSession.shared.data(from: url)
         let result = try JSONDecoder().decode(PeliculasResponse.self, from: data)
@@ -27,34 +27,20 @@ class PeliculasProvider {
     }
 }
 
-// Recogemos los datos las peliculas según búsqueda ----------------------------------
-
 struct PeliculasResponse: Decodable {
-    let Search: [Peliculas]
+    let Search: [PeliculaClass]
 }
-
-struct Peliculas: Decodable {
-    let Title: String
-    let imdbID: String
-    let Poster: String
-}
-
-// Recogemos los datos de una peliculas en concreto  ----------------------------------
 
 struct PeliculaClass: Codable {
     var Title: String
-    var Year: String
-    var Released: String
-    var Runtime: String
-    var Genre: String
-    var Director: String
-    var Plot: String
+    let imdbID: String
     var Poster: String
-}
-
-struct Rating: Codable {
-    var Source: String
-    var Value: String
+    var Year: String
+    var Released: String?
+    var Runtime: String?
+    var Genre: String?
+    var Director: String?
+    var Plot: String?
 }
     
     

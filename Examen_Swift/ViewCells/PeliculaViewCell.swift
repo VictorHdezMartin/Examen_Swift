@@ -20,8 +20,8 @@ class PeliculaViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func render (pelicula: Peliculas){
-        lblPelicula.text = pelicula.Title
+    func render (pelicula: PeliculaClass){
+        lblPelicula.text = "\(pelicula.Title) (\(pelicula.Year))"
         imgPelicula.loadFrom(url: pelicula.Poster)
     }
 }

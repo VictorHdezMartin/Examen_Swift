@@ -11,7 +11,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UISearchBarDe
     
     @IBOutlet weak var PeliculasTableView: UITableView!
     
-    var PeliculasList: [Peliculas] = []
+    var PeliculasList: [PeliculaClass] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
